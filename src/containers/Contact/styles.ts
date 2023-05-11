@@ -6,16 +6,16 @@ export const Container = styled.div`
   background: #eee;
 `
 export const Main = styled.main`
-  padding: 0 40px;
+  padding: 0 80px;
   margin: 50px 0;
-  height: 80vh;
+  height: 75vh;
   overflow-y: scroll;
 `
 
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 80px;
   margin: 50px 0;
 `
 

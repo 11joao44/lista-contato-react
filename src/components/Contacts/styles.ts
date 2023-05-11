@@ -1,6 +1,21 @@
 import styled from 'styled-components'
-
 import variaveis from '../../styles/variaveis'
+
+import * as enums from '../../utils/enums/contact'
+
+type TagProps = {
+  status?: enums.Status
+}
+
+function corDeFundo(props: TagProps): string {
+  if ('status' in props) {
+    if (props.status === enums.Status.ONLINE) return variaveis.verde
+    if (props.status === enums.Status.AUSENTE) return variaveis.vermelho1
+    if (props.status === enums.Status.OFFLINE) return '#999999'
+  }
+
+  return variaveis.azulTema
+}
 
 export const ContactCard = styled.div`
   background-color: #fcfcfc;
@@ -43,13 +58,13 @@ export const Td = styled.td`
   width: 192px;
 `
 
-export const Tag = styled.span`
+export const Tag = styled.span<TagProps>`
   padding: 4px 8px;
   margin-left: 16px;
   font-size: 16px;
   font-weight: bold;
   color: #fff;
-  background-color: green;
+  background-color: ${(props) => corDeFundo(props)};
   border-radius: 8px;
 `
 export const ActionBar = styled.div`
