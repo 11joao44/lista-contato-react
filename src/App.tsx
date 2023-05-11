@@ -1,10 +1,15 @@
+import ListContact from './containers/Contact'
+import Sidebar from './containers/sidebar'
 import EstiloGlobal, { Container } from './styles'
 
 function App() {
   return (
     <>
       <EstiloGlobal />
-      <Container>Olá Mundo</Container>
+      <Container>
+        <Sidebar />
+        <ListContact />
+      </Container>
     </>
   )
 }
