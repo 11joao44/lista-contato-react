@@ -7,22 +7,34 @@ import Contato from '../../models/Contact'
 
 type Props = Contato
 
-const Contact = ({ name, phone, email, birthday, status, id }: Props) => {
+const Contact = ({
+  name: nameOriginal,
+  phone,
+  email: emailOriginal,
+  birthday: birthdayOriginal,
+  status,
+  id
+}: Props) => {
   const dispatch = useDispatch()
-  const [nameEdit, setNameEdit] = useState('')
+  const [name, setName] = useState('')
+  const [birthday, setBirthday] = useState('')
+  const [email, setEmail] = useState('')
   const [inEdit, setIndEdit] = useState(false)
-  const initials = name.match(/\b\w/)?.join('').toUpperCase() || ''
+  const initials = nameOriginal.match(/\b\w/)?.join('').toUpperCase() || ''
   const color = `#${Math.floor(Math.random() * 16777215).toString(16)}`
 
   useEffect(() => {
-    if (nameEdit.length >= 0) {
-      setNameEdit(nameEdit)
+    if (nameOriginal.length > 0) {
+      setName(nameOriginal)
+      setEmail(emailOriginal)
+      setBirthday(birthdayOriginal)
     }
-  }, [nameEdit])
+  }, [nameOriginal, emailOriginal, birthdayOriginal])
 
   function cancelEdit() {
     setIndEdit(false)
-    setNameEdit(nameEdit)
+    setName(nameOriginal)
+    setEmail(emailOriginal)
   }
 
   return (
@@ -52,17 +64,29 @@ const Contact = ({ name, phone, email, birthday, status, id }: Props) => {
           <tbody>
             <tr>
               <S.Td>
-                <textarea
+                <input
                   disabled={!inEdit}
                   value={name}
-                  onChange={(evento) => setNameEdit(evento.target.value)}
-                >
-                  {name}
-                </textarea>
+                  onChange={(evento) => setName(evento.target.value)}
+                />
               </S.Td>
-              <S.Td>{phone}</S.Td>
-              <S.Td>{email}</S.Td>
-              <S.Td>{birthday}</S.Td>
+              <S.Td>
+                <input disabled={!inEdit} value={phone} />
+              </S.Td>
+              <S.Td>
+                <input
+                  disabled={!inEdit}
+                  value={email}
+                  onChange={(evento) => setEmail(evento.target.value)}
+                />
+              </S.Td>
+              <S.Td>
+                <input
+                  disabled={!inEdit}
+                  value={birthday}
+                  onChange={(evento) => setBirthday(evento.target.value)}
+                />
+              </S.Td>
               <S.Tag status={status}>{status}</S.Tag>
             </tr>
           </tbody>
@@ -83,6 +107,7 @@ const Contact = ({ name, phone, email, birthday, status, id }: Props) => {
                     id
                   })
                 )
+                setIndEdit(false)
               }}
             >
               <i className="fa-solid fa-check"></i>

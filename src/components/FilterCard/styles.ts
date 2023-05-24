@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-import { Props } from '.'
+type Props = {
+  active?: boolean
+}
 
-type PropsOmit = Omit<Props, 'counter' | 'subtitle'>
-
-export const Card = styled.div<PropsOmit>`
+export const Card = styled.div<Props>`
   padding: 16px;
   display: flex;
   align-items: center;

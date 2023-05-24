@@ -10,7 +10,6 @@ type TagProps = {
 function corDeFundo(props: TagProps): string {
   if ('status' in props) {
     if (props.status === enums.Status.ONLINE) return variaveis.verde
-    if (props.status === enums.Status.AUSENTE) return variaveis.vermelho1
     if (props.status === enums.Status.OFFLINE) return '#999999'
   }
 
@@ -56,6 +55,22 @@ export const Th = styled.th`
 
 export const Td = styled.td`
   width: 192px;
+
+  input {
+    background-color: transparent;
+    padding: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    border: 1px solid #fff;
+  }
+
+  input:disabled {
+    border: 1px solid transparent;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
 `
 
 export const Tag = styled.span<TagProps>`

@@ -3,9 +3,9 @@ import * as enums from '../utils/enums/contact'
 class Contato {
   name: string
   phone: number
-  status: enums.Status
   email: string
   birthday: string
+  status: enums.Status
   id: number
 
   constructor(

@@ -1,5 +1,5 @@
 export enum Status {
   ONLINE = 'online',
   OFFLINE = 'off-line',
-  AUSENTE = 'ausente'
+  ORDEM = 'A-Z'
 }

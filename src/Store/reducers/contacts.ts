@@ -9,28 +9,36 @@ type ContactState = {
 const initialState: ContactState = {
   itens: [
     {
-      name: 'Yasmin Melo',
-      phone: 6598112657,
-      email: 'google@gmail.com',
+      name: 'Gian Souza',
+      phone: +551142002991,
+      email: 'ebac@gmail.com',
       status: enums.Status.ONLINE,
-      birthday: '03/07/2000',
+      birthday: '99/99/9999',
       id: 1
     },
     {
-      name: 'Juca Neves',
-      phone: 6598112657,
-      email: 'google@gmail.com',
+      name: 'Paulo Rafael Faria dos Santos',
+      phone: +551142002991,
+      email: 'ebac@gmail.com',
       status: enums.Status.ONLINE,
-      birthday: '03/07/2000',
+      birthday: '99/99/9999',
       id: 2
     },
     {
-      name: 'Thiago Perozo',
-      phone: 6598112657,
-      email: 'google@gmail.com',
+      name: 'Bruno Soares Saldanha Marinho',
+      phone: +551142002991,
+      email: 'ebac@gmail.com',
       status: enums.Status.ONLINE,
-      birthday: '03/07/2000',
+      birthday: '99/99/9999',
       id: 3
+    },
+    {
+      name: 'Giovanni Sarao',
+      phone: +551142002991,
+      email: 'ebac@gmail.com',
+      status: enums.Status.ONLINE,
+      birthday: '99/99/9999',
+      id: 4
     }
   ]
 }
@@ -52,10 +60,21 @@ const contactSlice = createSlice({
       if (indexCotact >= 0) {
         state.itens[indexCotact] = action.payload
       }
+    },
+    cadastrar: (state, action: PayloadAction<Contact>) => {
+      const contantoExiste = state.itens.find(
+        (contato) => contato.phone === action.payload.phone
+      )
+
+      if (contantoExiste) {
+        alert('Já existe esse contato')
+      } else {
+        state.itens.push(action.payload)
+      }
     }
   }
 })
 
-export const { remover, editar } = contactSlice.actions
+export const { remover, editar, cadastrar } = contactSlice.actions
 
 export default contactSlice.reducer

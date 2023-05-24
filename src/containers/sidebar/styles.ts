@@ -47,9 +47,13 @@ export const ButtonAdd = styled.button`
   margin: 16px auto;
   font-size: 16px;
   border: 1px solid #1659d2;
-  color: #1659d2;
   background-color: #eee;
   font-weight: bold;
+
+  a {
+    text-decoration: none;
+    color: #1659d2;
+  }
 
   i {
     margin-right: 8px;
@@ -57,8 +61,11 @@ export const ButtonAdd = styled.button`
   }
 
   :hover {
-    border: 1px solid #1659d2;
-    color: #eee;
+    border: 1px solid transparent;
     background-color: #1659d2;
+
+    a {
+      color: #eee;
+    }
   }
 `
